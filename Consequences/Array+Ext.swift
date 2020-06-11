@@ -24,10 +24,14 @@ extension Array {
         for i in first...last {
             if sortedArray.contains(where: {$0 == i}) {
                tempArray.append(i)
-            } else {
-               arrayResult.append(tempArray)
-               tempArray = []
+            } else if tempArray.count > 0 {
+                    arrayResult.append(tempArray)
+                    tempArray = []
             }
+        }
+        
+        if tempArray.count > 0 {
+            arrayResult.append(tempArray)
         }
         
         var result = ""

@@ -15,20 +15,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func doCalculate(_ sender: Any) {
         
-        guard let text = self.textFieldInput.text else {
-            return
-        }
-        let inputArray = text.components(separatedBy: ",")
-            .map({ string in
-            return Int(string.filter("0123456789".contains)) ?? 0
-        })
+        self.doCalculate()
+    }
+    
+    func doCalculate() {
         
-        self.textViewResult.text = Array<Any>.doFormSequence(inputArray)
+        if let text = self.textFieldInput.text  {
+            self.textViewResult.text = Model().doCalculate(text: text)
+        }
     }
     
 
